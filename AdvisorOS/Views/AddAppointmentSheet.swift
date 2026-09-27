@@ -114,8 +114,12 @@ struct AddAppointmentSheet: View {
             }
         }
         context.insert(appointment)
-        if !clients.contains(where: { $0.name.caseInsensitiveCompare(trimmedName) == .orderedSame }) {
-            context.insert(Client(name: trimmedName, email: appointment.clientEmail))
+        if let existing = ClientMatcher.match(name: trimmedName, email: appointment.clientEmail, in: clients) {
+            appointment.client = existing
+        } else {
+            let client = Client(name: trimmedName, email: appointment.clientEmail)
+            context.insert(client)
+            appointment.client = client
         }
         let by = advisorName.isEmpty ? "Advisor" : advisorName
         context.log("\(appointment.template.nameEN) with \(trimmedName) added for \(start.formatted(date: .abbreviated, time: .shortened))"

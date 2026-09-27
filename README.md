@@ -14,7 +14,9 @@ Personal project for educational purposes. Not financial advice, and not affilia
 - **Email a checklist:** from Templates, email a client their document list in English or French.
 - **Menu bar:** shows the next appointment and any missing documents.
 
-All data is stored locally with SwiftData, and every integration is free.
+## Local only
+
+Everything runs and is stored on the advisor's Mac: SwiftData for records, Apple's on-device model for drafts, and the Mac's own calendars and mail app. There's no Advisor OS server or cloud database, and nothing is sent anywhere except emails the advisor chooses to send. Every integration is free.
 
 ## Build and run
 
@@ -43,7 +45,7 @@ scripts/make-icon.swift  Generates the app icon
 
 ## Next steps
 
-1. **Web booking page:** clients book, fill in intake and upload documents. Hosted in Canada, with bookings syncing into the app.
+1. **Client booking, run from this Mac:** clients pick a time and send documents with no cloud server. See "Local only" below.
 2. **Distribution:** Developer ID signing, notarization, a `.dmg` for edouardlam.com, and Sparkle for updates. This needs the Apple Developer Program (US$99/year). Local builds are ad-hoc signed.
 3. Microsoft 365, Google and Zoom sign-in for automatic video links. All are free APIs.
 4. Webhooks so firms can connect their own CRM.

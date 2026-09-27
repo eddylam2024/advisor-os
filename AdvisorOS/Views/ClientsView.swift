@@ -5,7 +5,6 @@ import UniformTypeIdentifiers
 struct ClientsView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Client.name) private var clients: [Client]
-    @Query(sort: \Appointment.start) private var appointments: [Appointment]
     @State private var selection = Set<PersistentIdentifier>()
     @State private var showingAdd = false
     @State private var importing = false
@@ -64,7 +63,7 @@ struct ClientsView: View {
     }
 
     private func nextAppointment(for client: Client) -> String {
-        guard let next = appointments.first(where: { $0.clientName == client.name && $0.end >= .now }) else { return "None booked" }
+        guard let next = client.appointments.filter({ $0.end >= .now }).min(by: { $0.start < $1.start }) else { return "None booked" }
         return next.start.formatted(date: .abbreviated, time: .shortened)
     }
 

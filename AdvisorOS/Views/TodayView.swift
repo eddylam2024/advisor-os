@@ -170,6 +170,7 @@ struct AppointmentDetailView: View {
     @AppStorage("advisorName") private var advisorName = ""
     @Bindable var appointment: Appointment
     var onDelete: (Appointment) -> Void = { _ in }
+    @Query(sort: \Client.name) private var clients: [Client]
     @State private var working: DraftKind?
     @State private var latestDraft: Draft?
 
@@ -209,7 +210,30 @@ struct AppointmentDetailView: View {
                     .buttonStyle(.glass)
             }
             if appointment.isDemo { Pill(text: "Demo", tint: Theme.warn) }
+            if appointment.client == nil {
+                Pill(text: "Not linked to a client", tint: Theme.warn)
+            } else if appointment.language == "fr" {
+                Pill(text: "Français", tint: .accentColor)
+            }
             Menu {
+                Picker("Client", selection: Binding(
+                    get: { appointment.client?.persistentModelID },
+                    set: { id in
+                        appointment.client = clients.first { $0.persistentModelID == id }
+                        if let c = appointment.client, !c.email.isEmpty { appointment.clientEmail = c.email }
+                    })) {
+                    Text("Not linked").tag(PersistentIdentifier?.none)
+                    ForEach(clients) { Text($0.name).tag(Optional($0.persistentModelID)) }
+                }
+                if appointment.client == nil {
+                    Button("Add \(appointment.clientName) as a New Client", systemImage: "person.badge.plus") {
+                        let client = Client(name: appointment.clientName, email: appointment.clientEmail, source: "From an appointment")
+                        context.insert(client)
+                        appointment.client = client
+                        context.log("Client \(client.name) added from an appointment", by: advisorLabel)
+                    }
+                }
+                Divider()
                 Picker("Appointment type", selection: $appointment.templateID) {
                     ForEach(AppointmentTemplate.all) { Text($0.nameEN).tag($0.id) }
                 }
@@ -315,7 +339,8 @@ struct AppointmentDetailView: View {
         defer { working = nil }
         let result = await drafting.draft(kind, for: appointment, advisorName: advisorLabel)
         let draft = Draft(kind: kind, clientName: appointment.clientName, clientEmail: appointment.clientEmail,
-                          text: result.text, generatedBy: result.engine)
+                          text: result.text, generatedBy: result.engine,
+                          language: DraftingService.language(for: kind, appointment))
         context.insert(draft)
         context.log("\(kind.label) drafted for \(appointment.clientName) (\(result.engine))", by: "AI")
         latestDraft = draft

@@ -79,6 +79,7 @@ struct ContentView: View {
                 if (try? context.save()) != nil { didOfferDemoData = true }
             }
             calendar.start(context: context)
+            context.linkUnassignedAppointments()
         }
     }
 

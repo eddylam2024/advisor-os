@@ -31,7 +31,7 @@ struct ConnectionsView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 280), spacing: 12, alignment: .top)], alignment: .leading, spacing: 12) {
                     planned("person.crop.square", "Microsoft 365 and Google sign-in", "Adds Teams and Meet links to new bookings through their free APIs.")
                     planned("video", "Zoom", "Creates a Zoom link for each video appointment. Works with free Zoom accounts.")
-                    planned("globe", "Web booking page", "Clients book, fill in intake and upload documents. Hosted in Canada.")
+                    planned("globe", "Client booking", "Clients pick a time and send their documents. Runs from this Mac, with no cloud server.")
                     planned("point.3.connected.trianglepath.dotted", "Webhooks", "Sends booked, changed and approved events to your own CRM.")
                 }
             }

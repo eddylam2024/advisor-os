@@ -3,9 +3,12 @@ export DEVELOPER_DIR ?= /Applications/Xcode.app/Contents/Developer
 DERIVED = build/DerivedData
 APP = $(DERIVED)/Build/Products/Debug/Advisor OS.app
 
-.PHONY: project build run test icon clean
+.PHONY: cert project build run test icon dmg clean
 
-project:            ## Regenerate AdvisorOS.xcodeproj from project.yml
+cert:               ## Create the local signing identity once (keeps macOS permissions across rebuilds)
+	./scripts/make-signing-cert.sh
+
+project: cert       ## Regenerate AdvisorOS.xcodeproj from project.yml
 	xcodegen generate
 
 build: project
@@ -20,5 +23,8 @@ test: project
 icon:
 	swift scripts/make-icon.swift
 
+dmg: cert          ## Release build packaged as dist/AdvisorOS-<version>.dmg (not notarized)
+	./scripts/make-dmg.sh
+
 clean:
-	rm -rf build
+	rm -rf build dist

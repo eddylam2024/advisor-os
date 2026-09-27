@@ -1,5 +1,6 @@
 import Foundation
 import FoundationModels
+import SwiftData
 import Testing
 @testable import Advisor_OS
 
@@ -94,5 +95,63 @@ struct DraftingTests {
         print("---- On-device brief (\(result.engine)) ----\n\(result.text)\n----")
         #expect(result.engine == "On-device model")
         #expect(result.text.count > 80)
+    }
+}
+
+@MainActor
+struct ClientLinkingTests {
+    private func makeContext() throws -> ModelContext {
+        let container = try ModelContainer(for: Client.self, Appointment.self, Draft.self, AuditEntry.self,
+                                           configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        return ModelContext(container)
+    }
+
+    @Test func emailBeatsName() throws {
+        let context = try makeContext()
+        let julie = Client(name: "Julie Martin", email: "julie@example.com")
+        let other = Client(name: "J. Martin", email: "other@example.com")
+        [julie, other].forEach(context.insert)
+        #expect(ClientMatcher.match(name: "J. Martin", email: "JULIE@example.com", in: [julie, other]) === julie)
+    }
+
+    @Test func namesMatchExactlyIgnoringCaseAndSpacing() throws {
+        let context = try makeContext()
+        let martin = Client(name: "J. Martin")
+        context.insert(martin)
+        #expect(ClientMatcher.match(name: "  j.  martin ", email: "", in: [martin]) === martin)
+        #expect(ClientMatcher.match(name: "Julie Martin", email: "", in: [martin]) == nil)
+    }
+
+    @Test func linkingAtLaunchTiesAppointmentsToClients() throws {
+        let context = try makeContext()
+        let cote = Client(name: "S. Côté", email: "s.cote@example.com", preferredLanguage: "fr")
+        let appointment = Appointment(clientName: "S. Côté", start: .now, durationMinutes: 60, templateID: "preapproval")
+        context.insert(cote)
+        context.insert(appointment)
+        context.linkUnassignedAppointments()
+        #expect(appointment.client === cote)
+        #expect(appointment.clientEmail == "s.cote@example.com")
+        #expect(appointment.language == "fr")
+        #expect(cote.appointments.count == 1)
+    }
+
+    @Test func frenchClientsGetFrenchEmailsAndEnglishInternalNotes() throws {
+        let context = try makeContext()
+        let cote = Client(name: "S. Côté", preferredLanguage: "fr")
+        let appointment = Appointment(clientName: "S. Côté", start: .now.addingTimeInterval(86_400), durationMinutes: 60,
+                                      templateID: "preapproval", receivedDocuments: ["Government photo ID"])
+        context.insert(cote)
+        context.insert(appointment)
+        appointment.client = cote
+
+        let reminder = DraftingService.templateDraft(.reminder, for: appointment, advisorName: "E. Lam")
+        #expect(reminder.hasPrefix("Bonjour S. Côté"))
+        #expect(reminder.contains("Lettre d'emploi"))
+        #expect(!reminder.contains("Pièce d'identité avec photo"))
+        #expect(DraftingService.language(for: .reminder, appointment) == "fr")
+
+        let note = DraftingService.templateDraft(.complianceNote, for: appointment, advisorName: "E. Lam")
+        #expect(note.hasPrefix("File note"))
+        #expect(DraftingService.language(for: .complianceNote, appointment) == "en")
     }
 }

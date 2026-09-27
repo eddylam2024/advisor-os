@@ -40,12 +40,21 @@ final class DraftingService {
     The advisor will review and edit everything before it is used.
     """
 
+    /// The language a draft is written in: the client's for emails, English for internal documents.
+    static func language(for kind: DraftKind, _ appointment: Appointment) -> String {
+        kind.isClientFacing ? appointment.language : "en"
+    }
+
     func draft(_ kind: DraftKind, for appointment: Appointment, advisorName: String) async -> (text: String, engine: String) {
         let fallback = Self.templateDraft(kind, for: appointment, advisorName: advisorName)
         guard engine == .onDevice else { return (fallback, Engine.template(reason: "").label) }
         do {
             let session = LanguageModelSession(instructions: Self.instructions)
-            let response = try await session.respond(to: Self.prompt(kind, for: appointment, advisorName: advisorName))
+            var prompt = Self.prompt(kind, for: appointment, advisorName: advisorName)
+            if Self.language(for: kind, appointment) == "fr" {
+                prompt += "\n\nWrite the email in natural Canadian French (Québec), using vous. Use the French document names given."
+            }
+            let response = try await session.respond(to: prompt)
             let text = response.content.trimmingCharacters(in: .whitespacesAndNewlines)
             return text.isEmpty ? (fallback, Engine.template(reason: "").label) : (text, Engine.onDevice.label)
         } catch {
@@ -63,6 +72,7 @@ final class DraftingService {
         Agenda: \(t.agenda.joined(separator: "; "))
         Documents received: \(received)
         Documents missing: \(missing)
+        Missing documents in French: \(a.missingDocumentsLocalized.isEmpty || a.language != "fr" ? "n/a" : a.missingDocumentsLocalized.joined(separator: "; "))
         Advisor notes: \(a.notes.isEmpty ? "none" : a.notes)
         """
     }
@@ -83,6 +93,9 @@ final class DraftingService {
 
     /// Deterministic drafts used when the on-device model isn't available.
     static func templateDraft(_ kind: DraftKind, for a: Appointment, advisorName: String) -> String {
+        if language(for: kind, a) == "fr", let french = frenchTemplateDraft(kind, for: a, advisorName: advisorName) {
+            return french
+        }
         let t = a.template
         let when = a.start.formatted(date: .complete, time: .shortened)
         let missing = a.missingDocuments
@@ -133,6 +146,39 @@ final class DraftingService {
             Topics: \(t.agenda.joined(separator: "; "))
             No recommendation recorded at the time of this note.
             """
+        }
+    }
+
+    /// French versions of the client-facing emails.
+    private static func frenchTemplateDraft(_ kind: DraftKind, for a: Appointment, advisorName: String) -> String? {
+        let t = a.template
+        let missing = a.missingDocumentsLocalized
+        let missingList = missing.map { "• \($0)" }.joined(separator: "\n")
+        let when = a.start.formatted(Date.FormatStyle(date: .complete, time: .shortened).locale(Locale(identifier: "fr_CA")))
+        switch kind {
+        case .followUp:
+            return """
+            Bonjour \(a.clientName),
+
+            Merci pour notre rencontre d'aujourd'hui au sujet de votre \(t.nameFR.lowercased()).
+            \(missing.isEmpty ? "J'ai tout ce qu'il me faut pour l'instant. Je vous reviens bientôt avec la suite." : "Pour aller de l'avant, pourriez-vous m'envoyer les documents suivants :\n\n\(missingList)")
+
+            N'hésitez pas à me joindre si vous avez des questions.
+
+            \(advisorName)
+            """
+        case .reminder:
+            return """
+            Bonjour \(a.clientName),
+
+            Petit rappel de notre rendez-vous (\(t.nameFR.lowercased())) le \(when).
+            \(missing.isEmpty ? "Tout est en ordre, vous n'avez rien d'autre à apporter." : "Merci d'apporter ou de m'envoyer ces documents avant la rencontre :\n\n\(missingList)")
+
+            Au plaisir,
+            \(advisorName)
+            """
+        case .brief, .complianceNote:
+            return nil
         }
     }
 }

@@ -11,6 +11,7 @@ final class CalendarService {
     private(set) var lastSync: Date?
     private(set) var lastError: String?
     private var observer: NSObjectProtocol?
+    private var observedContext: ModelContext?
 
     /// The advisor's choice inside the app. macOS permission is separate and can only be revoked in System Settings.
     var isConnected: Bool {
@@ -75,8 +76,12 @@ final class CalendarService {
         if !isConnected { removeImported(from: context) }
         sync(into: context)
         guard observer == nil else { return }
+        observedContext = context
         observer = NotificationCenter.default.addObserver(forName: .EKEventStoreChanged, object: store, queue: .main) { [weak self] _ in
-            MainActor.assumeIsolated { _ = self?.sync(into: context) }
+            MainActor.assumeIsolated {
+                guard let self, let context = self.observedContext else { return }
+                self.sync(into: context)
+            }
         }
     }
 
@@ -125,6 +130,7 @@ final class CalendarService {
             store.events(matching: store.predicateForEvents(withStart: start, end: end, calendars: chosen)).filter { !$0.isAllDay }
 
         let existing = (try? context.fetch(FetchDescriptor<Appointment>())) ?? []
+        let clients = (try? context.fetch(FetchDescriptor<Client>())) ?? []
         var byEventID: [String: Appointment] = [:]
         for appointment in existing {
             if let id = appointment.calendarEventID { byEventID[id] = appointment }
@@ -147,8 +153,9 @@ final class CalendarService {
                 // Older builds guessed "phone" for events without a location. The app never sets phone itself on import.
                 if appointment.format == .phone || appointment.format == .unknown { appointment.format = format }
                 if appointment.clientEmail.isEmpty { appointment.clientEmail = email }
+                appointment.linkClient(from: clients)
             } else {
-                context.insert(Appointment(
+                let appointment = Appointment(
                     clientName: EventTitleParser.clientName(from: title),
                     clientEmail: email,
                     start: event.startDate,
@@ -156,7 +163,9 @@ final class CalendarService {
                     templateID: AppointmentTemplate.match(title: title).id,
                     format: format,
                     videoURL: video,
-                    calendarEventID: eventID))
+                    calendarEventID: eventID)
+                context.insert(appointment)
+                appointment.linkClient(from: clients)
                 added += 1
             }
         }

@@ -11,6 +11,7 @@ final class Client {
     var source: String
     var notes: String
     var createdAt: Date
+    @Relationship(deleteRule: .nullify, inverse: \Appointment.client) var appointments: [Appointment] = []
 
     init(name: String, email: String = "", phone: String = "", preferredLanguage: String = "en",
          kycReviewDue: Date? = nil, source: String = "Added by hand", notes: String = "") {
@@ -51,6 +52,7 @@ final class Appointment {
     var receivedDocuments: [String]
     var notes: String
     var isDemo: Bool
+    var client: Client?
 
     init(clientName: String, clientEmail: String = "", start: Date, durationMinutes: Int, templateID: String,
          format: MeetingFormat = .inPerson, videoURL: String? = nil, calendarEventID: String? = nil,
@@ -75,6 +77,24 @@ final class Appointment {
 
     var template: AppointmentTemplate { AppointmentTemplate.find(templateID) }
 
+    /// Client-facing drafts use this. Unlinked appointments default to English.
+    var language: String { client?.preferredLanguage ?? "en" }
+
+    /// Missing documents named in the client's language.
+    var missingDocumentsLocalized: [String] {
+        let t = template
+        return t.documents.en.indices.compactMap { i in
+            receivedDocuments.contains(t.documents.en[i]) ? nil : t.documents.list(language)[i]
+        }
+    }
+
+    /// Links this appointment to the matching client record, preferring email over name.
+    func linkClient(from clients: [Client]) {
+        guard client == nil else { return }
+        client = ClientMatcher.match(name: clientName, email: clientEmail, in: clients)
+        if let client, clientEmail.isEmpty { clientEmail = client.email }
+    }
+
     var end: Date { start.addingTimeInterval(TimeInterval(durationMinutes * 60)) }
 
     var missingDocuments: [String] {
@@ -95,6 +115,9 @@ enum DraftKind: String, Codable, CaseIterable {
     }
 
     var isEmail: Bool { self == .followUp || self == .reminder }
+
+    /// Emails go to the client in their language. Briefs and compliance notes are internal and stay in English.
+    var isClientFacing: Bool { isEmail }
 }
 
 enum DraftStatus: String, Codable {
@@ -112,8 +135,9 @@ final class Draft {
     var createdAt: Date
     var approvedAt: Date?
     var approvedBy: String?
+    var language: String = "en"
 
-    init(kind: DraftKind, clientName: String, clientEmail: String = "", text: String, generatedBy: String) {
+    init(kind: DraftKind, clientName: String, clientEmail: String = "", text: String, generatedBy: String, language: String = "en") {
         self.kindRaw = kind.rawValue
         self.statusRaw = DraftStatus.ready.rawValue
         self.clientName = clientName
@@ -121,6 +145,7 @@ final class Draft {
         self.text = text
         self.generatedBy = generatedBy
         self.createdAt = .now
+        self.language = language
     }
 
     var kind: DraftKind { DraftKind(rawValue: kindRaw) ?? .brief }
@@ -148,5 +173,32 @@ extension ModelContext {
     /// Every meaningful change goes through here so the audit trail stays complete.
     func log(_ action: String, by actor: String) {
         insert(AuditEntry(action: action, actor: actor))
+    }
+}
+
+nonisolated enum ClientMatcher {
+    /// Email is the strongest match. Names only match exactly, ignoring case and extra spaces,
+    /// so "J. Martin" and "Julie Martin" stay separate until the advisor links them.
+    static func match(name: String, email: String, in clients: [Client]) -> Client? {
+        let email = email.trimmingCharacters(in: .whitespaces)
+        if !email.isEmpty, let byEmail = clients.first(where: { $0.email.caseInsensitiveCompare(email) == .orderedSame }) {
+            return byEmail
+        }
+        let key = normalized(name)
+        guard !key.isEmpty else { return nil }
+        return clients.first { normalized($0.name) == key }
+    }
+
+    static func normalized(_ name: String) -> String {
+        name.lowercased().split(whereSeparator: \.isWhitespace).joined(separator: " ")
+    }
+}
+
+extension ModelContext {
+    /// Links any appointments that aren't tied to a client yet. Safe to run at every launch.
+    func linkUnassignedAppointments() {
+        let clients = (try? fetch(FetchDescriptor<Client>())) ?? []
+        let unlinked = (try? fetch(FetchDescriptor<Appointment>(predicate: #Predicate { $0.client == nil }))) ?? []
+        unlinked.forEach { $0.linkClient(from: clients) }
     }
 }

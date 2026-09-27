@@ -12,15 +12,8 @@ struct BookingPageView: View {
                         Spacer()
                         Pill(text: "Coming next", tint: Theme.warn)
                     }
-                    Text("Clients will pick an appointment type and a time, fill in a short form in English or French, and upload their documents. Nothing to download and no account to create. New bookings will appear in Today and Clients.")
+                    Text("Clients will pick an appointment type and a time in English or French, and send their documents. It runs from this Mac: no cloud server, no account for clients, and nothing stored outside your computer. New bookings will appear in Today and Clients.")
                         .foregroundStyle(.secondary)
-                    HStack(spacing: 8) {
-                        Image(systemName: "link")
-                        Text("yourname.advisoros.ca").font(.body.monospaced())
-                        Text("(planned)").foregroundStyle(.secondary)
-                    }
-                    .padding(10)
-                    .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: Theme.radiusButton))
                 }
                 .glassCard()
 

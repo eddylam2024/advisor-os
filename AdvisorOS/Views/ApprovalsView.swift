@@ -104,7 +104,12 @@ struct ApprovalsView: View {
         draft.approvedBy = by
         context.log("\(draft.kind.label) for \(draft.clientName) approved", by: by)
         if draft.kind.isEmail {
-            let subject = draft.kind == .reminder ? "Your upcoming appointment" : "Following up on our meeting"
+            let subject = switch (draft.kind, draft.language) {
+            case (.reminder, "fr"): "Votre rendez-vous à venir"
+            case (_, "fr"): "Suivi de notre rencontre"
+            case (.reminder, _): "Your upcoming appointment"
+            default: "Following up on our meeting"
+            }
             if MailService.openDraft(to: draft.clientEmail, subject: subject, body: draft.text) {
                 context.log("\(draft.kind.label) for \(draft.clientName) opened in \(MailService.defaultMailAppName)", by: by)
             } else {
@@ -127,6 +132,7 @@ struct DraftEditor: View {
                     Text(draft.clientName).font(.title2.weight(.semibold))
                 }
                 Spacer()
+                if draft.language == "fr" { Pill(text: "Français", tint: .accentColor) }
                 Pill(text: draft.status == .approved ? "Approved by \(draft.approvedBy ?? "advisor")" : "Drafted by \(draft.generatedBy)",
                      tint: draft.status == .approved ? Theme.good : .accentColor)
             }

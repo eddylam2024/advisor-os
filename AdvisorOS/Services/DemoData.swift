@@ -42,6 +42,7 @@ enum DemoData {
             Client(name: "M. Tremblay", email: "m.tremblay@example.com", kycReviewDue: Calendar.current.date(byAdding: .month, value: 3, to: today), source: "Demo data")
         ]
         clients.forEach(context.insert)
+        appointments.forEach { $0.linkClient(from: clients) }
         context.log("Demo data loaded", by: "System")
         try? context.save()
     }
