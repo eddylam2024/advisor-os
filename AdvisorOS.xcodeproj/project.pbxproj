@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13B5F57680BE25108DF7BFBA /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC835491679A41253F8794 /* DemoData.swift */; };
 		2E6DE87C3E347A990799E4AB /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F76A8427EE41E6CA6ED3E4 /* ClientsView.swift */; };
+		3A575E78983BB5788BF3935D /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE9DF92DFB2D8DCB94711F /* ScreenshotMode.swift */; };
 		493F1172D55F459B5D69B354 /* ApprovalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E25F843BCA26BC824DFE46B /* ApprovalsView.swift */; };
 		4FE2A43264AB73355996CCBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED50278BF1ABCBB4A9363A8 /* SettingsView.swift */; };
 		534D813C5831FA7EB6743220 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E2AC78C46E178B7EA8816 /* Models.swift */; };
@@ -56,6 +57,7 @@
 		7AAD87169B0F8ADD66AA9F95 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		7F8E2AC78C46E178B7EA8816 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8866951E32455D58C266F124 /* DraftingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftingService.swift; sourceTree = "<group>"; };
+		8CCE9DF92DFB2D8DCB94711F /* ScreenshotMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMode.swift; sourceTree = "<group>"; };
 		96F89E859EFF9D01240D9D44 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BED1F4526152324F3E2E8848 /* AdvisorOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorOSApp.swift; sourceTree = "<group>"; };
 		D2BFBD8E8DBD610D69B7FDC4 /* AdvisorOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvisorOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				BED1F4526152324F3E2E8848 /* AdvisorOSApp.swift */,
+				8CCE9DF92DFB2D8DCB94711F /* ScreenshotMode.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				F50583E852DFBCA2C08CDAAF /* MailService.swift in Sources */,
 				5B9A0FE7C366DAAAEA6FB6F7 /* MenuBarView.swift in Sources */,
 				534D813C5831FA7EB6743220 /* Models.swift in Sources */,
+				3A575E78983BB5788BF3935D /* ScreenshotMode.swift in Sources */,
 				4FE2A43264AB73355996CCBF /* SettingsView.swift in Sources */,
 				EBA1E98A76BABD30B821E9E8 /* TemplatesView.swift in Sources */,
 				AB923B951916BC029EDC22DA /* Theme.swift in Sources */,
@@ -318,7 +322,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Advisor OS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Personal project. Not financial advice.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Edouard Lam. Personal project, not financial advice.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -509,7 +513,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Advisor OS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Personal project. Not financial advice.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Edouard Lam. Personal project, not financial advice.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

@@ -65,6 +65,12 @@ struct ContentView: View {
         }
         .task {
             #if DEBUG
+            if ScreenshotMode.isOn {
+                ScreenshotMode.applyAppearance()
+                ScreenshotMode.seed(context)
+                if let raw = UserDefaults.standard.string(forKey: "section"), let item = SidebarItem(rawValue: raw) { selection = item }
+                return
+            }
             // Lets screenshots open a specific screen: open "Advisor OS.app" --args -section approvals
             if let raw = UserDefaults.standard.string(forKey: "section"), let item = SidebarItem(rawValue: raw) {
                 selection = item

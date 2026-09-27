@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "Advisor OS: A Local-First macOS Workspace for Canadian Financial Advice and Lending Appointments"
+abstract: >-
+  Advisor OS treats the appointment as the unit of work for retail financial advisors and mortgage agents.
+  It reads calendars already configured on the Mac through EventKit, attaches Canadian document checklists
+  and agendas to each appointment, drafts bilingual client communications and compliance notes with Apple's
+  on-device language model, and records every human approval in an audit trail. All data and inference
+  remain on the device.
+authors:
+  - family-names: "Lam"
+    given-names: "Edouard"
+    website: "https://edouardlam.com"
+version: "0.1.0"
+date-released: "2026-09-27"
+license: MIT
+keywords:
+  - financial advice
+  - lending
+  - local-first software
+  - on-device language models
+  - macOS
+  - SwiftUI
+  - Canada

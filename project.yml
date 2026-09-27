@@ -32,7 +32,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Advisor OS
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.business
         INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.
-        INFOPLIST_KEY_NSHumanReadableCopyright: Personal project. Not financial advice.
+        INFOPLIST_KEY_NSHumanReadableCopyright: "© 2026 Edouard Lam. Personal project, not financial advice."
         ENABLE_HARDENED_RUNTIME: YES
         CODE_SIGN_STYLE: Manual
         CODE_SIGN_IDENTITY: "Advisor OS Local Signing"

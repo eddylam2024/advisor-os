@@ -25,6 +25,9 @@ enum MailService {
 
     /// Name of the app that handles mailto: links on this Mac, e.g. "Mail" or "Microsoft Outlook".
     static var defaultMailAppName: String {
+        #if DEBUG
+        if let name = UserDefaults.standard.string(forKey: "mailAppName") { return name }
+        #endif
         guard let probe = URL(string: "mailto:test@example.com"),
               let appURL = NSWorkspace.shared.urlForApplication(toOpen: probe) else { return "No mail app" }
         return FileManager.default.displayName(atPath: appURL.path).replacingOccurrences(of: ".app", with: "")

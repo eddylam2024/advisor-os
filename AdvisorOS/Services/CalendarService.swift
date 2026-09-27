@@ -28,7 +28,14 @@ final class CalendarService {
         static let workCalendars = "workCalendarIDs"
     }
 
-    init() {
+    /// In screenshot mode the service acts as if no calendar was ever connected, so real events stay out of frame.
+    init(screenshotMode: Bool = false) {
+        if screenshotMode {
+            isConnected = false
+            workCalendarIDs = nil
+            status = .notDetermined
+            return
+        }
         let defaults = UserDefaults.standard
         // Builds before Connect / Disconnect existed treated granted access as connected.
         isConnected = defaults.object(forKey: Keys.connected) as? Bool
