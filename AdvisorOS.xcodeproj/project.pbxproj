@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13B5F57680BE25108DF7BFBA /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC835491679A41253F8794 /* DemoData.swift */; };
+		2E6DE87C3E347A990799E4AB /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F76A8427EE41E6CA6ED3E4 /* ClientsView.swift */; };
+		493F1172D55F459B5D69B354 /* ApprovalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E25F843BCA26BC824DFE46B /* ApprovalsView.swift */; };
+		4FE2A43264AB73355996CCBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED50278BF1ABCBB4A9363A8 /* SettingsView.swift */; };
+		534D813C5831FA7EB6743220 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8E2AC78C46E178B7EA8816 /* Models.swift */; };
+		5B9A0FE7C366DAAAEA6FB6F7 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B46FF940546D0643B3862E /* MenuBarView.swift */; };
+		6F9A38DAD5DF78576BE44120 /* ClientCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB38C419E6F37FF3121B720 /* ClientCSV.swift */; };
+		7A846021330F28D762BFC22C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F89E859EFF9D01240D9D44 /* ContentView.swift */; };
+		7AD628D2338170BEAF901C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EF881AD47039D7AB7B7C9F /* Assets.xcassets */; };
+		7E9BE10251C02963510F4B00 /* DraftingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8866951E32455D58C266F124 /* DraftingService.swift */; };
+		7FFFECB2F1A68D79CCC02EC4 /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375594B96A1D194371D9403C /* ConnectionsView.swift */; };
+		86C6BC0E635CB08095ADFE11 /* AppointmentTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060283C507F0681BAE831331 /* AppointmentTemplate.swift */; };
+		9216BDA400A6ECFC6BA6818C /* AdvisorOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13DCEB92F968361A26A0E88 /* AdvisorOSTests.swift */; };
+		A7E980A9598C6679A6613B3C /* AdvisorOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1F4526152324F3E2E8848 /* AdvisorOSApp.swift */; };
+		AB923B951916BC029EDC22DA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088B4F0EAA00E453F341E0C /* Theme.swift */; };
+		D18D877EE3B7A874101672B7 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD87169B0F8ADD66AA9F95 /* CalendarService.swift */; };
+		D9621EBEF6A03B12F71D336E /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F48F7EDDA6B1924D58F933 /* TodayView.swift */; };
+		E283B101A84A7116313D7605 /* BookingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F99857B9F031C1CC3B0245F /* BookingPageView.swift */; };
+		EBA1E98A76BABD30B821E9E8 /* TemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267B0B0CF85ECC393F3E874 /* TemplatesView.swift */; };
+		F3845FA14D2D08DE51A3980C /* AddAppointmentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5E311C9AF0F91D15A6713 /* AddAppointmentSheet.swift */; };
+		F50583E852DFBCA2C08CDAAF /* MailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E5C585A2CFDBA86E71CF8A /* MailService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B8C6C46BDFF8A3C88FBB7959 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FCCE37FFB146424464F05AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 847088E1D73AF8DDAB8B5847;
+			remoteInfo = AdvisorOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02BC835491679A41253F8794 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
+		060283C507F0681BAE831331 /* AppointmentTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTemplate.swift; sourceTree = "<group>"; };
+		2088B4F0EAA00E453F341E0C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		375594B96A1D194371D9403C /* ConnectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsView.swift; sourceTree = "<group>"; };
+		3BB38C419E6F37FF3121B720 /* ClientCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCSV.swift; sourceTree = "<group>"; };
+		40F48F7EDDA6B1924D58F933 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		41E5C585A2CFDBA86E71CF8A /* MailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailService.swift; sourceTree = "<group>"; };
+		5267B0B0CF85ECC393F3E874 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
+		5E25F843BCA26BC824DFE46B /* ApprovalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalsView.swift; sourceTree = "<group>"; };
+		65E5E311C9AF0F91D15A6713 /* AddAppointmentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentSheet.swift; sourceTree = "<group>"; };
+		6F99857B9F031C1CC3B0245F /* BookingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPageView.swift; sourceTree = "<group>"; };
+		71EF881AD47039D7AB7B7C9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7AAD87169B0F8ADD66AA9F95 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		7F8E2AC78C46E178B7EA8816 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8866951E32455D58C266F124 /* DraftingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftingService.swift; sourceTree = "<group>"; };
+		96F89E859EFF9D01240D9D44 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BED1F4526152324F3E2E8848 /* AdvisorOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorOSApp.swift; sourceTree = "<group>"; };
+		D2BFBD8E8DBD610D69B7FDC4 /* AdvisorOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvisorOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DED50278BF1ABCBB4A9363A8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DFC4D909093FA59ADCD040C5 /* AdvisorOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdvisorOS.entitlements; sourceTree = "<group>"; };
+		E13DCEB92F968361A26A0E88 /* AdvisorOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorOSTests.swift; sourceTree = "<group>"; };
+		E3A266390CE97B25DB6DCE1F /* AdvisorOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvisorOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3B46FF940546D0643B3862E /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		F8F76A8427EE41E6CA6ED3E4 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		188C1BAF59D98DA4673202DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65E5E311C9AF0F91D15A6713 /* AddAppointmentSheet.swift */,
+				5E25F843BCA26BC824DFE46B /* ApprovalsView.swift */,
+				6F99857B9F031C1CC3B0245F /* BookingPageView.swift */,
+				F8F76A8427EE41E6CA6ED3E4 /* ClientsView.swift */,
+				375594B96A1D194371D9403C /* ConnectionsView.swift */,
+				96F89E859EFF9D01240D9D44 /* ContentView.swift */,
+				E3B46FF940546D0643B3862E /* MenuBarView.swift */,
+				DED50278BF1ABCBB4A9363A8 /* SettingsView.swift */,
+				5267B0B0CF85ECC393F3E874 /* TemplatesView.swift */,
+				40F48F7EDDA6B1924D58F933 /* TodayView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45822FAB1DF75CE848BFD306 /* AdvisorOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				E13DCEB92F968361A26A0E88 /* AdvisorOSTests.swift */,
+			);
+			path = AdvisorOSTests;
+			sourceTree = "<group>";
+		};
+		53BAB215186D17B1B9685964 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2BFBD8E8DBD610D69B7FDC4 /* AdvisorOS.app */,
+				E3A266390CE97B25DB6DCE1F /* AdvisorOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FA154808DF343391B4ED6BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				060283C507F0681BAE831331 /* AppointmentTemplate.swift */,
+				7F8E2AC78C46E178B7EA8816 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		85227579FD8550767991B080 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BED1F4526152324F3E2E8848 /* AdvisorOSApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8F71653DB5AA8B97F746E098 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				2088B4F0EAA00E453F341E0C /* Theme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		9BA55C7B03186DA3F1F8ADA9 = {
+			isa = PBXGroup;
+			children = (
+				F58D36EC256938C8D1EBAD68 /* AdvisorOS */,
+				45822FAB1DF75CE848BFD306 /* AdvisorOSTests */,
+				53BAB215186D17B1B9685964 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C01B97E033A669079D358679 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71EF881AD47039D7AB7B7C9F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE1ABF25B520ABC87F57F1D7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7AAD87169B0F8ADD66AA9F95 /* CalendarService.swift */,
+				3BB38C419E6F37FF3121B720 /* ClientCSV.swift */,
+				02BC835491679A41253F8794 /* DemoData.swift */,
+				8866951E32455D58C266F124 /* DraftingService.swift */,
+				41E5C585A2CFDBA86E71CF8A /* MailService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F58D36EC256938C8D1EBAD68 /* AdvisorOS */ = {
+			isa = PBXGroup;
+			children = (
+				DFC4D909093FA59ADCD040C5 /* AdvisorOS.entitlements */,
+				85227579FD8550767991B080 /* App */,
+				8F71653DB5AA8B97F746E098 /* Design */,
+				6FA154808DF343391B4ED6BF /* Models */,
+				C01B97E033A669079D358679 /* Resources */,
+				CE1ABF25B520ABC87F57F1D7 /* Services */,
+				188C1BAF59D98DA4673202DE /* Views */,
+			);
+			path = AdvisorOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		847088E1D73AF8DDAB8B5847 /* AdvisorOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB8B431ECA90982CBE5427D6 /* Build configuration list for PBXNativeTarget "AdvisorOS" */;
+			buildPhases = (
+				FF4BD95ACB5C1D3724575EEC /* Sources */,
+				AABB66577E6C11E5AC78F78D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdvisorOS;
+			packageProductDependencies = (
+			);
+			productName = AdvisorOS;
+			productReference = D2BFBD8E8DBD610D69B7FDC4 /* AdvisorOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AEF6F2B479587A34CDE95687 /* AdvisorOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79BED16C21C52CFA8B212A60 /* Build configuration list for PBXNativeTarget "AdvisorOSTests" */;
+			buildPhases = (
+				E723BFC96DF6B20DB77E21BD /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6D66F737FB9B6CB7FA4D226 /* PBXTargetDependency */,
+			);
+			name = AdvisorOSTests;
+			packageProductDependencies = (
+			);
+			productName = AdvisorOSTests;
+			productReference = E3A266390CE97B25DB6DCE1F /* AdvisorOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FCCE37FFB146424464F05AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					847088E1D73AF8DDAB8B5847 = {
+						ProvisioningStyle = Manual;
+					};
+					AEF6F2B479587A34CDE95687 = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = B4ACA7EEFCE649390C364F17 /* Build configuration list for PBXProject "AdvisorOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9BA55C7B03186DA3F1F8ADA9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 53BAB215186D17B1B9685964 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				847088E1D73AF8DDAB8B5847 /* AdvisorOS */,
+				AEF6F2B479587A34CDE95687 /* AdvisorOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AABB66577E6C11E5AC78F78D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD628D2338170BEAF901C69 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E723BFC96DF6B20DB77E21BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9216BDA400A6ECFC6BA6818C /* AdvisorOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4BD95ACB5C1D3724575EEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3845FA14D2D08DE51A3980C /* AddAppointmentSheet.swift in Sources */,
+				A7E980A9598C6679A6613B3C /* AdvisorOSApp.swift in Sources */,
+				86C6BC0E635CB08095ADFE11 /* AppointmentTemplate.swift in Sources */,
+				493F1172D55F459B5D69B354 /* ApprovalsView.swift in Sources */,
+				E283B101A84A7116313D7605 /* BookingPageView.swift in Sources */,
+				D18D877EE3B7A874101672B7 /* CalendarService.swift in Sources */,
+				6F9A38DAD5DF78576BE44120 /* ClientCSV.swift in Sources */,
+				2E6DE87C3E347A990799E4AB /* ClientsView.swift in Sources */,
+				7FFFECB2F1A68D79CCC02EC4 /* ConnectionsView.swift in Sources */,
+				7A846021330F28D762BFC22C /* ContentView.swift in Sources */,
+				13B5F57680BE25108DF7BFBA /* DemoData.swift in Sources */,
+				7E9BE10251C02963510F4B00 /* DraftingService.swift in Sources */,
+				F50583E852DFBCA2C08CDAAF /* MailService.swift in Sources */,
+				5B9A0FE7C366DAAAEA6FB6F7 /* MenuBarView.swift in Sources */,
+				534D813C5831FA7EB6743220 /* Models.swift in Sources */,
+				4FE2A43264AB73355996CCBF /* SettingsView.swift in Sources */,
+				EBA1E98A76BABD30B821E9E8 /* TemplatesView.swift in Sources */,
+				AB923B951916BC029EDC22DA /* Theme.swift in Sources */,
+				D9621EBEF6A03B12F71D336E /* TodayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E6D66F737FB9B6CB7FA4D226 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 847088E1D73AF8DDAB8B5847 /* AdvisorOS */;
+			targetProxy = B8C6C46BDFF8A3C88FBB7959 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04C698E8A86A15A024491D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AdvisorOS/AdvisorOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Advisor OS";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Personal project. Not financial advice.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.edouardlam.advisoros;
+				PRODUCT_NAME = "Advisor OS";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2071AF8C48BEFB32DC714DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		396EA4B6AB88C8D0A02CF30E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.edouardlam.AdvisorOSTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Advisor OS.app/Contents/MacOS/Advisor OS";
+			};
+			name = Debug;
+		};
+		5DC1E766E295EE93B6079167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.edouardlam.AdvisorOSTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Advisor OS.app/Contents/MacOS/Advisor OS";
+			};
+			name = Release;
+		};
+		9A35532A2192B0990251F3BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		CF60EBB1EE73DC28FDF50AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AdvisorOS/AdvisorOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Advisor OS";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Personal project. Not financial advice.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.edouardlam.advisoros;
+				PRODUCT_NAME = "Advisor OS";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79BED16C21C52CFA8B212A60 /* Build configuration list for PBXNativeTarget "AdvisorOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396EA4B6AB88C8D0A02CF30E /* Debug */,
+				5DC1E766E295EE93B6079167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B4ACA7EEFCE649390C364F17 /* Build configuration list for PBXProject "AdvisorOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A35532A2192B0990251F3BB /* Debug */,
+				2071AF8C48BEFB32DC714DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EB8B431ECA90982CBE5427D6 /* Build configuration list for PBXNativeTarget "AdvisorOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04C698E8A86A15A024491D7E /* Debug */,
+				CF60EBB1EE73DC28FDF50AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FCCE37FFB146424464F05AC /* Project object */;
+}

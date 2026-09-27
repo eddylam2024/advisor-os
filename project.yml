@@ -1,0 +1,64 @@
+name: AdvisorOS
+options:
+  bundleIdPrefix: com.edouardlam
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  AdvisorOS:
+    type: application
+    platform: macOS
+    sources:
+      - AdvisorOS
+    entitlements:
+      path: AdvisorOS/AdvisorOS.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.personal-information.calendars: true
+        com.apple.security.files.user-selected.read-write: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_NAME: Advisor OS
+        PRODUCT_BUNDLE_IDENTIFIER: com.edouardlam.advisoros
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Advisor OS
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.business
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: Advisor OS reads your appointments to prepare client briefs and checklists. Calendar data stays on this Mac.
+        INFOPLIST_KEY_NSHumanReadableCopyright: Personal project. Not financial advice.
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+  AdvisorOSTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - AdvisorOSTests
+    dependencies:
+      - target: AdvisorOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Advisor OS.app/Contents/MacOS/Advisor OS"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+schemes:
+  AdvisorOS:
+    build:
+      targets:
+        AdvisorOS: all
+        AdvisorOSTests: [test]
+    test:
+      targets:
+        - AdvisorOSTests

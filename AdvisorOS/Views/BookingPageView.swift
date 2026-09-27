@@ -1,0 +1,38 @@
+import SwiftUI
+
+/// The client-facing web booking page is the next piece to build (see README).
+/// Until it exists, advisors share checklists by email from Templates.
+struct BookingPageView: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: Theme.gapLarge) {
+                VStack(alignment: .leading, spacing: Theme.gap) {
+                    HStack {
+                        Text("Your booking page").font(.title2.weight(.semibold))
+                        Spacer()
+                        Pill(text: "Coming next", tint: Theme.warn)
+                    }
+                    Text("Clients will pick an appointment type and a time, fill in a short form in English or French, and upload their documents. Nothing to download and no account to create. New bookings will appear in Today and Clients.")
+                        .foregroundStyle(.secondary)
+                    HStack(spacing: 8) {
+                        Image(systemName: "link")
+                        Text("yourname.advisoros.ca").font(.body.monospaced())
+                        Text("(planned)").foregroundStyle(.secondary)
+                    }
+                    .padding(10)
+                    .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: Theme.radiusButton))
+                }
+                .glassCard()
+
+                VStack(alignment: .leading, spacing: Theme.gap) {
+                    SectionLabel("Works today")
+                    Label("Email any client the checklist for their appointment, in English or French, from Templates.", systemImage: "envelope")
+                    Label("Book in your usual calendar. Put the type in the title, like \"Annual review – J. Martin\", and Advisor OS picks the right template.", systemImage: "calendar")
+                    Label("Video links from Teams, Zoom or Meet in the event are picked up automatically.", systemImage: "video")
+                }
+                .glassCard()
+            }
+            .padding(Theme.paddingLarge)
+        }
+    }
+}
